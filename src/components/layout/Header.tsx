@@ -4,7 +4,7 @@ const links = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'sobre', label: 'Sobre' },
   { id: 'projetos', label: 'Projetos' },
-  { id: 'como-trabalho', label: 'Como trabalho' },
+  { id: 'como-eu-conduzo-os-projetos', label: 'Como eu conduzo os projetos' },
   { id: 'contato', label: 'Contato' },
 ]
 
