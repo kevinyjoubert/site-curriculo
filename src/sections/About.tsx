@@ -12,7 +12,7 @@ export function About() {
       className="
         relative
         py-24
-        scroll-mt-20
+        scroll-mt-4
         overflow-hidden
       "
     >
