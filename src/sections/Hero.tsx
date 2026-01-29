@@ -12,33 +12,6 @@ export function Hero() {
         
       "
     >
-      {/* Glow superior esquerdo
-      <div
-        className="
-          absolute
-          -top-40
-          -left-40
-          w-[600px]
-          h-[600px]
-          bg-indigo-500/20
-          rounded-full
-          blur-3xl
-        "
-      /> */}
-
-      {/* Glow inferior direito (NÃO CORTA)
-      <div
-        className="
-          absolute
-          bottom-[90px]
-          right-[-140px]
-          w-[520px]
-          h-[520px]
-          bg-purple-600/10
-          rounded-full
-          blur-3xl
-        "
-      /> */}
 
       {/* Conteúdo */}
       <div
