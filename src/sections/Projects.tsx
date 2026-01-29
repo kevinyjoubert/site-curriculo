@@ -7,6 +7,7 @@ export function Projects() {
   return (
     <section
       id="projetos"
+      aria-labelledby="projects-title"
       className="min-h-screen scroll-mt-20"
     >
       <div
@@ -22,6 +23,7 @@ export function Projects() {
       >
         {/* Título */}
         <h2
+          id="projects-title"
           className="
             self-start
             inline-flex
@@ -50,7 +52,10 @@ export function Projects() {
               pr-4
             "
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-6">
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-6"
+              aria-live="polite"
+            >
               {projects.slice(0, 10).map(project => (
                 <Card
                   key={project.slug}
@@ -73,7 +78,15 @@ export function Projects() {
                   <div className="mt-4">
                     <Link
                       to={`/projetos/${project.slug}`}
-                      className="text-sm text-indigo-400 hover:underline"
+                      className="
+                        text-sm text-indigo-400 hover:underline
+                        focus:outline-none
+                        focus-visible:ring-2
+                        focus-visible:ring-indigo-500/60
+                        focus-visible:ring-offset-2
+                        focus-visible:ring-offset-zinc-950
+                      "
+                      aria-label={`Ver detalhes do projeto ${project.title}`}
                     >
                       Ver detalhes →
                     </Link>

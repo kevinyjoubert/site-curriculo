@@ -2,6 +2,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
+      aria-labelledby="hero-title"
       className="
         relative
         min-h-screen
@@ -9,10 +10,8 @@ export function Hero() {
         items-center
         overflow-hidden
         animate-fade-in
-        
       "
     >
-
       {/* Conteúdo */}
       <div
         className="
@@ -25,7 +24,10 @@ export function Hero() {
           pb-32
         "
       >
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+        <h1
+          id="hero-title"
+          className="text-4xl md:text-6xl font-bold tracking-tight"
+        >
           Keviny Joubert Cruz
           <span className="block text-indigo-400 mt-2">
             Desenvolvedor de Sistemas
@@ -50,17 +52,38 @@ export function Hero() {
           e longo prazo.
         </p>
 
-        <div className="mt-10 flex gap-4">
+        {/* Ações principais */}
+        <div
+          className="mt-10 flex gap-4"
+          role="navigation"
+          aria-label="Ações principais"
+        >
           <a
             href="#projetos"
-            className="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition"
+            className="
+              px-6 py-3 rounded-lg
+              bg-indigo-600 hover:bg-indigo-500 transition
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-indigo-500/60
+              focus-visible:ring-offset-2
+              focus-visible:ring-offset-zinc-950
+            "
           >
             Ver projetos reais
           </a>
 
           <a
             href="#contato"
-            className="px-6 py-3 rounded-lg border border-zinc-700 hover:border-zinc-500 transition"
+            className="
+              px-6 py-3 rounded-lg
+              border border-zinc-700 hover:border-zinc-500 transition
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-indigo-500/60
+              focus-visible:ring-offset-2
+              focus-visible:ring-offset-zinc-950
+            "
           >
             Falar comigo
           </a>

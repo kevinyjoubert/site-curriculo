@@ -3,6 +3,7 @@ type ButtonProps = {
   onClick?: () => void
   href?: string
   variant?: 'primary' | 'secondary'
+  disabled?: boolean
 }
 
 export function Button({
@@ -10,9 +11,20 @@ export function Button({
   onClick,
   href,
   variant = 'primary',
+  disabled = false,
 }: ButtonProps) {
   const base =
-    'inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-indigo-500'
+    `
+    inline-flex items-center justify-center
+    px-6 py-3 rounded-lg font-medium transition
+    focus:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-indigo-500/60
+    focus-visible:ring-offset-2
+    focus-visible:ring-offset-zinc-950
+    disabled:opacity-50
+    disabled:cursor-not-allowed
+    `
 
   const variants = {
     primary: 'bg-indigo-600 hover:bg-indigo-500 text-white',
@@ -22,14 +34,25 @@ export function Button({
 
   if (href) {
     return (
-      <a href={href} className={`${base} ${variants[variant]}`}>
+      <a
+        href={disabled ? undefined : href}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
+        className={`${base} ${variants[variant]}`}
+      >
         {children}
       </a>
     )
   }
 
   return (
-    <button onClick={onClick} className={`${base} ${variants[variant]}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-disabled={disabled}
+      className={`${base} ${variants[variant]}`}
+    >
       {children}
     </button>
   )

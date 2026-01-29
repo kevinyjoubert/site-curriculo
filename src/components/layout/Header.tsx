@@ -37,7 +37,6 @@ export function Header() {
 
     const closeOnScroll = () => setOpen(false)
     window.addEventListener('scroll', closeOnScroll)
-
     return () => window.removeEventListener('scroll', closeOnScroll)
   }, [open])
 
@@ -45,25 +44,45 @@ export function Header() {
     <header className="fixed top-0 left-0 w-full z-50 bg-zinc-950/80 backdrop-blur border-b border-zinc-800">
       <div className="w-[80vw] max-w-[1400px] px-6 h-16 flex items-center justify-between">
 
-        {/* Logo / Voltar ao início */}
+        {/* Logo */}
         <a
           href="#inicio"
-          className="font-bold tracking-tight text-white hover:text-indigo-400 transition"
+          className="
+            font-bold tracking-tight text-white transition
+            hover:text-indigo-400
+            focus:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-indigo-500/60
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-zinc-950
+          "
         >
           Keviny Joubert Cruz
         </a>
 
         {/* Desktop menu */}
-        <nav className="hidden md:flex gap-6 text-sm absolute right-5">
+        <nav
+          aria-label="Navegação principal"
+          className="hidden md:flex gap-6 text-sm absolute right-5"
+        >
           {links.map(link => (
             <a
               key={link.id}
               href={`#${link.id}`}
-              className={`transition ${
-                active === link.id
-                  ? 'text-indigo-400 font-medium'
-                  : 'text-zinc-300 hover:text-white'
-              }`}
+              aria-current={active === link.id ? 'page' : undefined}
+              className={`
+                transition
+                focus:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-indigo-500/60
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-zinc-950
+                ${
+                  active === link.id
+                    ? 'text-indigo-400 font-medium'
+                    : 'text-zinc-300 hover:text-white'
+                }
+              `}
             >
               {link.label}
             </a>
@@ -73,23 +92,36 @@ export function Header() {
         {/* Mobile button */}
         <button
           onClick={() => setOpen(prev => !prev)}
-          aria-label="Menu"
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={open}
-          className="md:hidden absolute right-5 flex flex-col justify-center gap-[5px] w-8 h-8"
+          aria-controls="menu-mobile"
+          className="
+            md:hidden absolute right-5
+            flex flex-col justify-center gap-[5px]
+            w-8 h-8
+            focus:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-indigo-500/60
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-zinc-950
+          "
         >
           <span
+            aria-hidden="true"
             className={`
               h-[2px] w-full bg-white transition-all duration-300
               ${open ? 'rotate-45 translate-y-[7px]' : ''}
             `}
           />
           <span
+            aria-hidden="true"
             className={`
               h-[2px] w-full bg-white transition-all duration-300
               ${open ? 'opacity-0' : ''}
             `}
           />
           <span
+            aria-hidden="true"
             className={`
               h-[2px] w-full bg-white transition-all duration-300
               ${open ? '-rotate-45 -translate-y-[7px]' : ''}
@@ -100,18 +132,33 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-zinc-950 border-t border-zinc-800 animate-fade-in">
-          <nav className="flex flex-col px-6 py-4 gap-4">
+        <div
+          id="menu-mobile"
+          className="md:hidden bg-zinc-950 border-t border-zinc-800 animate-fade-in"
+        >
+          <nav
+            aria-label="Navegação principal"
+            className="flex flex-col px-6 py-4 gap-4"
+          >
             {links.map(link => (
               <a
                 key={link.id}
                 href={`#${link.id}`}
+                aria-current={active === link.id ? 'page' : undefined}
                 onClick={() => setOpen(false)}
-                className={`transition ${
-                  active === link.id
-                    ? 'text-indigo-400'
-                    : 'text-zinc-300 hover:text-white'
-                }`}
+                className={`
+                  transition
+                  focus:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-indigo-500/60
+                  focus-visible:ring-offset-2
+                  focus-visible:ring-offset-zinc-950
+                  ${
+                    active === link.id
+                      ? 'text-indigo-400'
+                      : 'text-zinc-300 hover:text-white'
+                  }
+                `}
               >
                 {link.label}
               </a>

@@ -38,9 +38,8 @@ export function Contact() {
         ">
           {/* WhatsApp */}
           <a
-            href="https://wa.me/5581991708885?text=Olá%20Keviny,%0A%0A
-            Vim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%0A
-            Podemos%20falar%20sobre%20escopo,%20prazo%20e%20viabilidade?"
+            aria-label="Entrar em contato via WhatsApp"
+            href="https://wa.me/5581991708885?text=Olá%20Keviny,%0A%0AVim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%0APodemos%20falar%20sobre%20escopo,%20prazo%20e%20viabilidade?"
             target="_blank"
             rel="noopener noreferrer"
             className="
@@ -57,9 +56,14 @@ export function Contact() {
             transition
             hover:border-green-500/50
             hover:bg-zinc-900/70
+            focus:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-indigo-500/60
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-zinc-950
             "
           >
-            <MessageCircle className="w-5 h-5 text-zinc-400 group-hover:text-green-400" />
+            <MessageCircle aria-hidden="true" className="w-5 h-5 text-zinc-400 group-hover:text-green-400" />
             <span className="text-zinc-200">
             WhatsApp
             </span>
@@ -67,9 +71,8 @@ export function Contact() {
 
           {/* Email */}
           <a
-            href="mailto:joubert.kjc@gmail.com
-              ?subject=Contato%20via%20site%20-%20Keviny%20Joubert
-              &body=Olá%20Keviny,%0A%0AVim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre:"
+            aria-label="Enviar email para Keviny Joubert"
+            href="mailto:joubert.kjc@gmail.com?subject=Contato%20via%20site%20-%20Keviny%20Joubert&body=Olá%20Keviny,%0A%0AVim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
             className="
               group
               flex
@@ -84,9 +87,14 @@ export function Contact() {
               transition
               hover:border-indigo-500/50
               hover:bg-zinc-900/70
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-indigo-500/60
+              focus-visible:ring-offset-2
+              focus-visible:ring-offset-zinc-950
             "
           >
-            <Mail className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
+            <Mail aria-hidden="true" className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
             <span className="text-zinc-200">
               joubert.kjc@gmail.com
             </span>
@@ -94,6 +102,7 @@ export function Contact() {
 
           {/* GitHub */}
           <a
+            aria-label="Acessar GitHub de Keviny Joubert"
             href="https://github.com/kevinyjoubert"
             target="_blank"
             rel="noopener noreferrer"
@@ -111,9 +120,14 @@ export function Contact() {
               transition
               hover:border-indigo-500/50
               hover:bg-zinc-900/70
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-indigo-500/60
+              focus-visible:ring-offset-2
+              focus-visible:ring-offset-zinc-950
             "
           >
-            <Github className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
+            <Github aria-hidden="true" className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
             <span className="text-zinc-200">
               github.com/kevinyjoubert
             </span>
@@ -121,6 +135,7 @@ export function Contact() {
 
           {/* LinkedIn */}
           <a
+            aria-label="Acessar LinkedIn de Keviny Joubert"
             href="https://linkedin.com/in/keviny-joubert"
             target="_blank"
             rel="noopener noreferrer"
@@ -138,9 +153,14 @@ export function Contact() {
               transition
               hover:border-indigo-500/50
               hover:bg-zinc-900/70
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-indigo-500/60
+              focus-visible:ring-offset-2
+              focus-visible:ring-offset-zinc-950
             "
           >
-            <Linkedin className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
+            <Linkedin aria-hidden="true" className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
             <span className="text-zinc-200">
               linkedin.com/in/keviny-joubert
             </span>

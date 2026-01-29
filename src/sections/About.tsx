@@ -15,11 +15,16 @@ export function About() {
         scroll-mt-4
         overflow-hidden
       "
+      aria-labelledby="about-title"
     >
-
       {/* Conteúdo */}
       <div className="relative w-[80vw] max-w-[1400px] mx-auto px-6">
-        <h2 className="inline-block px-2 pb-1 text-2xl font-bold border-b border-white">
+
+        {/* Título */}
+        <h2
+          id="about-title"
+          className="inline-block px-2 pb-1 text-2xl font-bold border-b border-white"
+        >
           Como eu trabalho
         </h2>
 
@@ -35,13 +40,26 @@ export function About() {
           como aquela solução vai se comportar no médio e longo prazo.
         </p>
 
-        <div className="mt-10 px-3 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Lista de competências */}
+        <div
+          className="mt-10 px-3 grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          role="list"
+          aria-label="Áreas de atuação"
+        >
 
           {/* Frontend */}
-          <div className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default">
+          <div
+            role="listitem"
+            className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default"
+          >
             <div className="flex items-center gap-3">
-              <Layout className="w-5 h-5 text-zinc-400" />
-              <h3 className="font-semibold">Interfaces funcionais</h3>
+              <Layout
+                className="w-5 h-5 text-zinc-400"
+                aria-hidden="true"
+              />
+              <h3 className="font-semibold">
+                Interfaces funcionais
+              </h3>
             </div>
             <p className="mt-3 text-sm text-zinc-400">
               Interfaces objetivas, pensadas para o uso diário, sem excesso visual
@@ -50,10 +68,18 @@ export function About() {
           </div>
 
           {/* Backend */}
-          <div className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default">
+          <div
+            role="listitem"
+            className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default"
+          >
             <div className="flex items-center gap-3">
-              <Server className="w-5 h-5 text-zinc-400" />
-              <h3 className="font-semibold">Backend consistente</h3>
+              <Server
+                className="w-5 h-5 text-zinc-400"
+                aria-hidden="true"
+              />
+              <h3 className="font-semibold">
+                Backend consistente
+              </h3>
             </div>
             <p className="mt-3 text-sm text-zinc-400">
               Desenvolvimento de APIs e serviços com regras de negócio claras,
@@ -62,10 +88,18 @@ export function About() {
           </div>
 
           {/* Banco de dados */}
-          <div className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default">
+          <div
+            role="listitem"
+            className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default"
+          >
             <div className="flex items-center gap-3">
-              <Database className="w-5 h-5 text-zinc-400" />
-              <h3 className="font-semibold">Banco de dados e integridade</h3>
+              <Database
+                className="w-5 h-5 text-zinc-400"
+                aria-hidden="true"
+              />
+              <h3 className="font-semibold">
+                Banco de dados e integridade
+              </h3>
             </div>
             <p className="mt-3 text-sm text-zinc-400">
               Modelagem, consultas e rotinas focadas em consistência, performance e
@@ -74,10 +108,18 @@ export function About() {
           </div>
 
           {/* Manutenção */}
-          <div className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default">
+          <div
+            role="listitem"
+            className="p-6 rounded-xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm hover:border-zinc-700 cursor-default"
+          >
             <div className="flex items-center gap-3">
-              <Wrench className="w-5 h-5 text-zinc-400" />
-              <h3 className="font-semibold">Manutenção e evolução</h3>
+              <Wrench
+                className="w-5 h-5 text-zinc-400"
+                aria-hidden="true"
+              />
+              <h3 className="font-semibold">
+                Manutenção e evolução
+              </h3>
             </div>
             <p className="mt-3 text-sm text-zinc-400">
               Código organizado e decisões técnicas que facilitam ajustes futuros,

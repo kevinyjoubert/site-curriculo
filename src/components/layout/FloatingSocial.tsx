@@ -2,7 +2,9 @@ import { Github, Linkedin, MessageCircle } from 'lucide-react'
 
 export function FloatingSocial() {
   return (
-    <div className="
+    <nav
+      aria-label="Redes sociais"
+      className="
       fixed 
       right-6 
       bottom-6
@@ -10,7 +12,8 @@ export function FloatingSocial() {
       hidden md:flex 
       flex-col 
       gap-4
-    ">
+    "
+    >
       {/* WhatsApp */}
       <a
         href="https://wa.me/5581991708885?text=Olá%20Keviny,%20vim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
@@ -24,10 +27,15 @@ export function FloatingSocial() {
           text-white 
           hover:scale-110 
           transition
+          focus:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-indigo-500/60
+          focus-visible:ring-offset-2
+          focus-visible:ring-offset-zinc-950
         "
         aria-label="WhatsApp"
       >
-        <MessageCircle size={20} />
+        <MessageCircle aria-hidden="true" size={20} />
       </a>
 
       {/* GitHub */}
@@ -43,10 +51,15 @@ export function FloatingSocial() {
           text-white 
           hover:scale-110 
           transition
+          focus:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-indigo-500/60
+          focus-visible:ring-offset-2
+          focus-visible:ring-offset-zinc-950
         "
         aria-label="GitHub"
       >
-        <Github size={20} />
+        <Github aria-hidden="true" size={20} />
       </a>
 
       {/* LinkedIn */}
@@ -62,11 +75,16 @@ export function FloatingSocial() {
           text-white 
           hover:scale-110 
           transition
+          focus:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-indigo-500/60
+          focus-visible:ring-offset-2
+          focus-visible:ring-offset-zinc-950
         "
         aria-label="LinkedIn"
       >
-        <Linkedin size={20} />
+        <Linkedin aria-hidden="true" size={20} />
       </a>
-    </div>
+    </nav>
   )
 }
