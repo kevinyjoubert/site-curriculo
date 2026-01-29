@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin } from 'lucide-react'
+import { Mail, Github, Linkedin, MessageCircle } from 'lucide-react'
 
 export function Contact() {
   return (
@@ -36,9 +36,40 @@ export function Contact() {
           gap-4
           max-w-3xl
         ">
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/5581991708885?text=Olá%20Keviny,%0A%0A
+            Vim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%0A
+            Podemos%20falar%20sobre%20escopo,%20prazo%20e%20viabilidade?"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+            group
+            flex
+            items-center
+            gap-4
+            rounded-lg
+            border
+            border-zinc-800
+            bg-zinc-900/40
+            px-5
+            py-4
+            transition
+            hover:border-green-500/50
+            hover:bg-zinc-900/70
+            "
+          >
+            <MessageCircle className="w-5 h-5 text-zinc-400 group-hover:text-green-400" />
+            <span className="text-zinc-200">
+            WhatsApp
+            </span>
+          </a>
+
           {/* Email */}
           <a
-            href="mailto:joubert.kjc@gmail.com"
+            href="mailto:joubert.kjc@gmail.com
+              ?subject=Contato%20via%20site%20-%20Keviny%20Joubert
+              &body=Olá%20Keviny,%0A%0AVim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre:"
             className="
               group
               flex

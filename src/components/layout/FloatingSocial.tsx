@@ -13,12 +13,12 @@ export function FloatingSocial() {
     ">
       {/* WhatsApp */}
       <a
-        href="https://wa.me/5581991708885"
+        href="https://wa.me/5581991708885?text=Olá%20Keviny,%20vim%20através%20do%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
         target="_blank"
         rel="noopener noreferrer"
         className="
           w-12 h-12 
-          flex items-center  justify-center
+          flex items-center justify-center
           rounded-full 
           bg-green-500 
           text-white 
