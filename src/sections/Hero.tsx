@@ -33,15 +33,21 @@ export function Hero() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-zinc-300 text-lg leading-relaxed">
-          Atuo há quase uma década em TI, com forte experiência em sistemas corporativos,
-          banco de dados e regras de negócio. Hoje trabalho focado em full stack,
-          integrações e automações — construindo soluções que funcionam no mundo real,
-          não só no tutorial.
+          Atuo há quase uma década em TI, desenvolvendo sistemas corporativos
+          do zero, desde a interface e experiência do usuário até regras de
+          negócio do sistema, até estrutura e tratamento em banco de dados.
+        </p>
+
+        <p className="mt-2 max-w-2xl text-zinc-300 text-lg leading-relaxed">
+          Trabalho com desenvolvimento full stack, integrações e automações,
+          entregando soluções que sustentam operações reais e funcionam fora
+          do ambiente de teste.
         </p>
 
         <p className="mt-4 max-w-2xl text-zinc-400">
-          Desenvolvo soluções com código organizado, escolhas técnicas conscientes e
-          atenção total à estabilidade e evolução do sistema.
+          Meu foco é transformar necessidade em sistema estável,
+          com código organizado e decisões técnicas pensadas para o médio
+          e longo prazo.
         </p>
 
         <div className="mt-10 flex gap-4">
