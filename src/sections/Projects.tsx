@@ -15,12 +15,12 @@ export function Projects() {
     >
       <div className="h-full w-[80vw] max-w-[1400px] mx-auto px-6 flex flex-col">
         {/* Título fixo */}
-        <h2 className="py-6 text-2xl font-bold">
+        <h2 className="self-start inline-block px-2 pb-1 text-2xl font-bold border-b border-white">
           Projetos
         </h2>
 
         {/* Área principal */}
-        <div className="flex-1 grid lg:grid-cols-2 gap-10 overflow-hidden">
+        <div className="flex-1 grid lg:grid-cols-2 gap-10 overflow-hidden py-6">
 
           {/* Lista de projetos (SCROLL INTERNO) */}
           <div className="overflow-y-auto pr-2">
