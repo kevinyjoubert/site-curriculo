@@ -1,33 +1,118 @@
+import { Mail, Github, Linkedin } from 'lucide-react'
+
 export function Contact() {
   return (
-    <section id="contato" className="py-24 scroll-mt-20">
+    <section id="contato" className="py-32 scroll-mt-20">
       <div className="w-[80vw] max-w-[1400px] mx-auto px-6">
-        <h2 className="inline-block px-2 pb-1 text-2xl font-bold border-b border-white">Contato</h2>
 
-        <p className="mt-4 px-3 text-zinc-400">
-          Quer conversar sobre um projeto ou ideia?
+        {/* Título */}
+        <h2 className="
+          inline-block
+          px-2
+          pb-1
+          text-2xl
+          font-bold
+          border-b
+          border-white/60
+        ">
+          Contato
+        </h2>
+
+        {/* Texto */}
+        <p className="mt-6 max-w-2xl px-2 text-zinc-300 leading-relaxed">
+          Se você tem um projeto, uma ideia ou precisa resolver um problema
+          real, podemos conversar.
         </p>
 
-        <div className="mt-6 px-3 flex flex-col gap-2">
+        <p className="mt-2 max-w-2xl px-2 text-zinc-400 leading-relaxed">
+          Prefiro entender o contexto antes de propor qualquer solução.
+        </p>
+
+        {/* Botões */}
+        <div className="
+          mt-10
+          px-2
+          grid
+          gap-4
+          max-w-3xl
+        ">
+          {/* Email */}
           <a
-            href="mailto:seuemail@email.com"
-            className="text-indigo-400 hover:underline"
+            href="mailto:joubert.kjc@gmail.com"
+            className="
+              group
+              flex
+              items-center
+              gap-4
+              rounded-lg
+              border
+              border-zinc-800
+              bg-zinc-900/40
+              px-5
+              py-4
+              transition
+              hover:border-indigo-500/50
+              hover:bg-zinc-900/70
+            "
           >
-            seuemail@email.com
+            <Mail className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
+            <span className="text-zinc-200">
+              joubert.kjc@gmail.com
+            </span>
           </a>
 
+          {/* GitHub */}
           <a
-            href="https://github.com/seugithub"
-            className="text-indigo-400 hover:underline"
+            href="https://github.com/kevinyjoubert"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              group
+              flex
+              items-center
+              gap-4
+              rounded-lg
+              border
+              border-zinc-800
+              bg-zinc-900/40
+              px-5
+              py-4
+              transition
+              hover:border-indigo-500/50
+              hover:bg-zinc-900/70
+            "
           >
-            GitHub
+            <Github className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
+            <span className="text-zinc-200">
+              github.com/kevinyjoubert
+            </span>
           </a>
 
+          {/* LinkedIn */}
           <a
-            href="https://linkedin.com/in/seulinkedin"
-            className="text-indigo-400 hover:underline"
+            href="https://linkedin.com/in/keviny-joubert"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              group
+              flex
+              items-center
+              gap-4
+              rounded-lg
+              border
+              border-zinc-800
+              bg-zinc-900/40
+              px-5
+              py-4
+              transition
+              hover:border-indigo-500/50
+              hover:bg-zinc-900/70
+            "
           >
-            LinkedIn
+            <Linkedin className="w-5 h-5 text-zinc-400 group-hover:text-indigo-400" />
+            <span className="text-zinc-200">
+              linkedin.com/in/keviny-joubert
+            </span>
           </a>
         </div>
       </div>
