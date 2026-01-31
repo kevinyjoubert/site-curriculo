@@ -1,41 +1,21 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
 import { Button } from '../components/ui/Button'
+import { FadeInView } from '../components/ui/FadeInView'
+import { useInView } from '../hooks/UseInView'
 
 export function Contact() {
   const [text1, setText1] = useState('')
   const [text2, setText2] = useState('')
   const [text3, setText3] = useState('')
   
-  // Estado para controlar se a seção está visível na tela
-  const [isVisible, setIsVisible] = useState(false)
-  
-  // Referência para o elemento vigiado
-  const sectionRef = useRef<HTMLElement>(null)
+  const { ref: sectionRef, visible: isVisible } = useInView<HTMLElement>(0.3)
   
   const part1 = "Vamos construir algo "
   const part2 = "extraordinário"
   const part3 = " ?"
 
-  // 1. Observer: Detecta quando a seção entra/sai da tela
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-      },
-      { 
-        threshold: 0.3 
-      }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  // 2. Animação de Digitação
+  // Lógica da Digitação
   useEffect(() => {
     if (!isVisible) {
       setText1('')
@@ -70,15 +50,10 @@ export function Contact() {
     window.open(`https://wa.me/5581991708885?text=${text}`, '_blank')
   }
 
-  // Classes base para animação de entrada (Fade In + Slide Up)
-  const baseAnimationClass = "transition-all duration-1000 ease-out transform"
-  const hiddenClass = "opacity-0 translate-y-12"
-  const visibleClass = "opacity-100 translate-y-0"
-
   return (
     <section 
       id="contato" 
-      ref={sectionRef} 
+      ref={sectionRef}
       className="py-24 bg-zinc-950 relative overflow-hidden"
     >
       <div className="container mx-auto px-6 relative z-10">
@@ -87,7 +62,7 @@ export function Contact() {
 
             {/* Coluna da Esquerda */}
             <div>
-              {/* Título com Digitação */}
+              {/* Título com Digitação (Controlado pelo hook isVisible) */}
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white min-h-[80px] md:min-h-[90px]">
                 {text1}
                 <span className="text-indigo-400">{text2}</span>
@@ -95,26 +70,16 @@ export function Contact() {
                 <span className="animate-pulse text-indigo-400 inline-block ml-1">|</span>
               </h2>
               
-              {/* Parágrafo com animação */}
-              <p 
-                className={`
-                  text-zinc-400 mb-8 text-lg 
-                  ${baseAnimationClass} delay-500
-                  ${isVisible ? visibleClass : hiddenClass}
-                `}
-              >
-                Estou disponível para novos projetos freelance. Se você busca soluções que atendam a sua necessidade,
-                facilite a sua rotina com um visual perfeito e rápido, entre em contato agora comigo.
-              </p>
+              {/* Parágrafo */}
+              <FadeInView delay={500}>
+                <p className="text-zinc-400 mb-8 text-lg">
+                  Estou disponível para novos projetos freelance. Se você busca soluções que atendam a sua necessidade,
+                  facilite a sua rotina com um visual perfeito e rápido, entre em contato agora comigo.
+                </p>
+              </FadeInView>
 
-              {/* Botões com animação */}
-              <div 
-                className={`
-                  flex flex-col gap-4
-                  ${baseAnimationClass} delay-700
-                  ${isVisible ? visibleClass : hiddenClass}
-                `}
-              >
+              {/* Botões */}
+              <FadeInView delay={700} className="flex flex-col gap-4">
                 <Button
                   onClick={handleWhatsAppClick}
                   className="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white py-4 text-lg transition-transform hover:scale-105"
@@ -131,50 +96,46 @@ export function Contact() {
                   <Mail className="w-5 h-5" />
                   Enviar E-mail
                 </a>
-              </div>
+              </FadeInView>
             </div>
 
-            {/* Coluna da Direita (Card Canais) - Animação (Delay 1000ms) */}
-            <div 
-              className={`
-                bg-zinc-900/50 px-14 h-full flex justify-center flex-col rounded-2xl border border-zinc-800 backdrop-blur-sm
-                ${baseAnimationClass} delay-1000
-                ${isVisible ? visibleClass : hiddenClass}
-              `}
-            >
-              <h3 className="text-xl font-semibold text-white mb-6">Canais Diretos</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4 hover:bg-zinc-800/50 p-2 rounded transition-colors">
-                  <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
-                    <Phone className="w-6 h-6" />
+            {/* Card da Direita */}
+            <FadeInView delay={1000} className="h-full">
+              <div className="bg-zinc-900/50 px-14 h-full flex justify-center flex-col rounded-2xl border border-zinc-800 backdrop-blur-sm">
+                <h3 className="text-xl font-semibold text-white mb-6">Canais Diretos</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 hover:bg-zinc-800/50 p-2 rounded transition-colors">
+                    <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
+                      <Phone className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-zinc-500 mb-1">Telefone / WhatsApp</p>
+                      <p className="text-zinc-200 font-medium">+55 (81) 99170-8885</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-zinc-500 mb-1">Telefone / WhatsApp</p>
-                    <p className="text-zinc-200 font-medium">+55 (81) 99170-8885</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4 hover:bg-zinc-800/50 p-2 rounded transition-colors">
-                  <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
-                    <Mail className="w-6 h-6" />
+                  <div className="flex items-start gap-4 hover:bg-zinc-800/50 p-2 rounded transition-colors">
+                    <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
+                      <Mail className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-zinc-500 mb-1">E-mail Profissional</p>
+                      <p className="text-zinc-200 font-medium">joubert.kjc@gmail.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-zinc-500 mb-1">E-mail Profissional</p>
-                    <p className="text-zinc-200 font-medium">joubert.kjc@gmail.com</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4 hover:bg-zinc-800/50 p-2 rounded transition-colors">
-                  <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-zinc-500 mb-1">Localização</p>
-                    <p className="text-zinc-200 font-medium">Recife - PE (Disponível Remoto)</p>
+                  <div className="flex items-start gap-4 hover:bg-zinc-800/50 p-2 rounded transition-colors">
+                    <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-zinc-500 mb-1">Localização</p>
+                      <p className="text-zinc-200 font-medium">Recife - PE (Disponível Remoto)</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </FadeInView>
 
           </div>
         </div>
