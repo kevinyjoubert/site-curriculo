@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const links = [
   { id: 'inicio', label: 'Início' },
@@ -12,10 +13,16 @@ export function Header() {
   const [active, setActive] = useState<string | null>(null)
   const [open, setOpen] = useState(false)
 
-  // Observa seções (menu ativo)
-  useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
+  // Hooks para gerenciar navegação híbrida
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isHome = location.pathname === '/'
 
+  useEffect(() => {
+    // O Observer só deve rodar se estivermos na Home
+    if (!isHome) return
+
+    const sections = document.querySelectorAll('section[id]')
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -29,59 +36,46 @@ export function Header() {
 
     sections.forEach(section => observer.observe(section))
     return () => observer.disconnect()
-  }, [])
+  }, [isHome])
 
-  // Fecha menu ao scroll (mobile)
-  useEffect(() => {
-    if (!open) return
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (!isHome) {
 
-    const closeOnScroll = () => setOpen(false)
-    window.addEventListener('scroll', closeOnScroll)
-    return () => window.removeEventListener('scroll', closeOnScroll)
-  }, [open])
+      e.preventDefault()
+
+      setOpen(false)
+
+      navigate(`/#${id}`)
+
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        element?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+
+    } else {
+      setOpen(false)
+    }
+  }
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-zinc-950/80 backdrop-blur border-b border-zinc-800">
       <div className="w-[80vw] max-w-[1400px] px-6 h-16 flex items-center justify-between">
-
-        {/* Logo */}
         <a
-          href="#inicio"
-          className="
-            font-bold tracking-tight text-white transition
-            hover:text-indigo-400
-            focus:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-indigo-500/60
-            focus-visible:ring-offset-2
-            focus-visible:ring-offset-zinc-950
-          "
+          href="/#inicio"
+          className="font-bold tracking-tight text-white transition hover:text-indigo-400"
         >
           Keviny Joubert Cruz
         </a>
 
-        {/* Desktop menu */}
-        <nav
-          aria-label="Navegação principal"
-          className="hidden md:flex gap-6 text-sm absolute right-5"
-        >
+        <nav className="hidden md:flex gap-6 text-sm absolute right-5">
           {links.map(link => (
             <a
               key={link.id}
               href={`#${link.id}`}
-              aria-current={active === link.id ? 'page' : undefined}
+              onClick={(e) => handleNavClick(e, link.id)}
               className={`
-                transition
-                focus:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-indigo-500/60
-                focus-visible:ring-offset-2
-                focus-visible:ring-offset-zinc-950
-                ${
-                  active === link.id
-                    ? 'text-indigo-400 font-medium'
-                    : 'text-zinc-300 hover:text-white'
-                }
+                transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/60
+                ${active === link.id && isHome ? 'text-indigo-400 font-medium' : 'text-zinc-300 hover:text-white'}
               `}
             >
               {link.label}
@@ -153,10 +147,9 @@ export function Header() {
                   focus-visible:ring-indigo-500/60
                   focus-visible:ring-offset-2
                   focus-visible:ring-offset-zinc-950
-                  ${
-                    active === link.id
-                      ? 'text-indigo-400'
-                      : 'text-zinc-300 hover:text-white'
+                  ${active === link.id
+                    ? 'text-indigo-400'
+                    : 'text-zinc-300 hover:text-white'
                   }
                 `}
               >
