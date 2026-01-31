@@ -56,7 +56,7 @@ export function Projects() {
                     {/* Badge de "Privado" se não tiver imagens */}
                     {project.images.length === 0 && (
                       <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-zinc-500 font-bold px-2 py-1 rounded bg-zinc-950/50 border border-zinc-800">
-                        <Lock className="w-3 h-3" /> Confidencial
+                        <Lock className="w-3 h-3" /> Empresa Privada
                       </div>
                     )}
                   </div>
@@ -83,7 +83,7 @@ export function Projects() {
                   </div>
 
                   {/* Ícone de seta absoluta no topo (Interação) */}
-                  <ArrowUpRight className="absolute top-8 right-8 w-5 h-5 text-zinc-600 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
+                  <ArrowUpRight className="absolute top-3 right-3 w-5 h-5 text-zinc-600 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                 </button>
               </FadeInView>
             )
