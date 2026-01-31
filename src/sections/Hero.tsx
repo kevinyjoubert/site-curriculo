@@ -1,13 +1,54 @@
+import { useState, useEffect } from 'react'
 import { ArrowRight, MessageCircle, Database, Code2, Cpu, FileText, Building2, FileSpreadsheet, Zap, Chrome, BarChart3 } from 'lucide-react'
 import { FadeInView } from '../components/ui/FadeInView'
+import { useInView } from '../hooks/UseInView'
 
 export function Hero() {
+  const [textName, setTextName] = useState('')
+  const [textSlogan, setTextSlogan] = useState('')
+  const [isTypingFinished, setIsTypingFinished] = useState(false)
+
+  // Utilizando seu hook para monitorar a visibilidade da seção
+  const { ref: sectionRef, visible: isVisible } = useInView<HTMLElement>(0.1)
+
+  const name = "Keviny Joubert"
+  const slogan = "Sistemas que escalam negócios."
+
+  useEffect(() => {
+    // Se sair da seção, reseta os estados
+    if (!isVisible) {
+      setTextName('')
+      setTextSlogan('')
+      setIsTypingFinished(false)
+      return
+    }
+
+    let currentStep = 0
+    const totalLength = name.length + slogan.length
+
+    const intervalId = setInterval(() => {
+      if (currentStep < name.length) {
+        setTextName(name.slice(0, currentStep + 1))
+      } else if (currentStep < totalLength) {
+        const offset = currentStep - name.length
+        setTextSlogan(slogan.slice(0, offset + 1))
+      } else {
+        // Finalizou a digitação
+        setIsTypingFinished(true)
+        clearInterval(intervalId)
+      }
+      currentStep++
+    }, 30)
+
+    return () => clearInterval(intervalId)
+  }, [isVisible])
+
   return (
     <section
       id="inicio"
+      ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden bg-zinc-950"
     >
-      {/* Efeitos de Fundo Cinematográficos */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-indigo-600/10 blur-[120px] rounded-full" />
         <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-purple-600/10 blur-[100px] rounded-full" />
@@ -27,23 +68,26 @@ export function Hero() {
             </div>
           </FadeInView>
 
-          <FadeInView delay={200}>
-            <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-white">
-              Keviny Joubert
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 mt-2">
-                Sistemas que escalam negócios.
+          <div className="min-h-[140px] md:min-h-[180px]">
+            <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+              {textName}
+              <span className="block text-transparent py-3 bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 mt-2">
+                {textSlogan}
+                {!isTypingFinished && isVisible && (
+                   <span className="animate-pulse text-indigo-400 inline-block ml-1">|</span>
+                )}
               </span>
             </h1>
-          </FadeInView>
+          </div>
 
-          <FadeInView delay={300}>
+          {/* O conteúdo abaixo só aparece após o typing terminar */}
+          <div className={`transition-all duration-1000 transform ${isTypingFinished ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            
             <p className="mt-8 text-lg md:text-xl text-zinc-400 leading-relaxed">
               Desenvolvedor Full Stack com foco em sistemas corporativos de alta performance. 
               Transformo processos complexos em ferramentas digitais simples, seguras e lucrativas.
             </p>
-          </FadeInView>
 
-          <FadeInView delay={400}>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 items-stretch">
               {[
                 { icon: Code2, text: "Desenvolvimento Web e Aplicações" },
@@ -67,27 +111,25 @@ export function Hero() {
                 </div>
               ))}
             </div>
-          </FadeInView>
 
-          <FadeInView delay={500}>
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
-              <a
-                href="#projetos"
+              <button
+                onClick={() => document.getElementById('projetos')?.scrollIntoView({ behavior: 'smooth' })}
                 className="group px-8 py-4 rounded-xl bg-white text-black font-bold flex items-center justify-center gap-2 hover:bg-zinc-300 transition-all active:scale-95"
               >
                 Ver Soluções Reais
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
 
-              <a
-                href="#contato"
+              <button
+                onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
                 className="px-8 py-4 rounded-xl border border-zinc-800 text-white font-medium flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all active:scale-95"
               >
                 <MessageCircle className="w-4 h-4 text-zinc-500" />
                 Iniciar uma conversa
-              </a>
+              </button>
             </div>
-          </FadeInView>
+          </div>
 
         </div>
       </div>
