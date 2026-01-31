@@ -132,7 +132,7 @@ export function Contact() {
                       {copiedItem === 'phone' ? (
                         <Check className="w-4 h-4 text-green-500 animate-in zoom-in" />
                       ) : (
-                        <Copy className="w-4 h-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" />
+                        <Copy className="w-4 h-4 opacity-100 transition-opacity" />
                       )}
                     </div>
                   </button>
@@ -153,7 +153,7 @@ export function Contact() {
                       {copiedItem === 'email' ? (
                         <Check className="w-4 h-4 text-green-500 animate-in zoom-in" />
                       ) : (
-                        <Copy className="w-4 h-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" />
+                        <Copy className="w-4 h-4 opacity-100 transition-opacity" />
                       )}
                     </div>
                   </button>

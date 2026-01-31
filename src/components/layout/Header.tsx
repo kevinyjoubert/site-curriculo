@@ -49,7 +49,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-zinc-950/80 backdrop-blur border-b border-zinc-800">
-      <div className="w-[80vw] max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="w-[90vw] max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
         <button
           onClick={() => handleScrollNavigation('inicio')}
           className="font-bold tracking-tight text-white transition hover:text-indigo-400"
