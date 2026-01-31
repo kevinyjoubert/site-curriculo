@@ -11,7 +11,6 @@ export type Project = {
   features?: string[]
   technologies?: string[]
   liveUrl?: string
-  githubUrl?: string
 }
 
 export const projects: Project[] = [
@@ -28,13 +27,11 @@ export const projects: Project[] = [
       'Integração direta com WhatsApp API',
       'Componentização Atômica e Reutilizável'
     ],
-    // Mapeando para stack e highlights para manter consistência com o layout novo
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     highlights: ['UX/UI Design', 'Performance', 'SEO'],
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
-    liveUrl: 'https://kevinyjoubert.netlify.app/',
-    githubUrl: 'https://github.com/kevinyjoubert/site-curriculo'
+    liveUrl: 'https://kevinyjoubert.netlify.app/'
   },
   {
     slug: 'cardapio-digital',

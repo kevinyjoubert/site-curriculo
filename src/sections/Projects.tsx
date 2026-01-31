@@ -1,9 +1,13 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { ArrowUpRight, Lock, Code2, Database, LayoutTemplate } from 'lucide-react'
 import { projects } from '../data/projects'
+import type { Project } from '../data/projects'
 import { FadeInView } from '../components/ui/FadeInView'
+import { ProjectModal } from '../components/ui/ProjectModal'
 
 export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
   return (
     <section id="projetos" className="py-32 bg-zinc-950 relative overflow-hidden">
       {/* Elementos decorativos de fundo */}
@@ -21,32 +25,38 @@ export function Projects() {
               Em todos, o foco é a excelência técnica e resolução de problemas complexos.
             </p>
 
-            <p className="mt-6 max-w-2xl text-zinc-400 text-sm">
-              Clique para mais detalhes de cada projeto
+            <p className="mt-6 text-zinc-500 text-sm flex items-center gap-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+              Clique nos cards para ver os detalhes
             </p>
           </div>
         </FadeInView>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
-            // Escolhe um ícone baseado no tipo de projeto
-            const Icon = project.title.includes('Dashboard') ? LayoutTemplate : project.stack.includes('Java') ? Database : Code2
+            {/* Icone de cada card */}
+            const Icon = project.title.includes('Dashboard') || project.title.includes('Painel') 
+              ? LayoutTemplate 
+              : project.stack.includes('Java') || project.stack.includes('SQL') 
+                ? Database 
+                : Code2
 
             return (
               <FadeInView key={project.slug} delay={index * 100} className="h-full">
-                <Link
-                  to={`/projetos/${project.slug}`}
-                  className="group relative block h-full p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/60 transition-all duration-300"
+                <button
+                  onClick={() => setSelectedProject(project)}
+                  className="group relative block w-full text-left h-full p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/60 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
                 >
                   {/* Cabeçalho do Card */}
                   <div className="flex justify-between items-start mb-6">
-                    <div className="p-3 rounded-lg bg-zinc-800/50 text-indigo-400 group-hover:scale-110 transition-transform duration-300">
+                    <div className="p-3 rounded-lg bg-zinc-800/50 text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-all duration-300">
                       <Icon className="w-6 h-6" />
                     </div>
-                    {/* Se não tiver imagem, assume que é privado/interno */}
+                    
+                    {/* Badge de "Privado" se não tiver imagens */}
                     {project.images.length === 0 && (
-                      <div className="flex items-center gap-1 text-xs text-zinc-500 font-medium px-2 py-1 rounded bg-zinc-900 border border-zinc-800">
-                        <Lock className="w-3 h-3" /> Projeto Empresa Privada
+                      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-zinc-500 font-bold px-2 py-1 rounded bg-zinc-950/50 border border-zinc-800">
+                        <Lock className="w-3 h-3" /> Confidencial
                       </div>
                     )}
                   </div>
@@ -56,30 +66,37 @@ export function Projects() {
                     {project.title}
                   </h3>
 
-                  <p className="text-zinc-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-8 line-clamp-3 group-hover:text-zinc-300 transition-colors">
                     {project.summary}
                   </p>
 
                   {/* Footer com Techs */}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.stack.slice(0, 3).map(tech => (
-                      <span key={tech} className="text-xs px-2 py-1 rounded-md bg-zinc-800/50 text-zinc-300 border border-zinc-700/50">
+                      <span key={tech} className="text-xs px-2.5 py-1 rounded-md bg-zinc-800/50 text-zinc-400 border border-zinc-700/30 group-hover:border-zinc-600/50 transition-colors">
                         {tech}
                       </span>
                     ))}
                     {project.stack.length > 3 && (
-                      <span className="text-xs px-2 py-1 text-zinc-500">+{project.stack.length - 3}</span>
+                      <span className="text-xs px-2 py-1 text-zinc-600 font-medium">+{project.stack.length - 3}</span>
                     )}
                   </div>
 
-                  {/* Ícone de seta absoluta no topo */}
+                  {/* Ícone de seta absoluta no topo (Interação) */}
                   <ArrowUpRight className="absolute top-8 right-8 w-5 h-5 text-zinc-600 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
-                </Link>
+                </button>
               </FadeInView>
             )
           })}
         </div>
       </div>
+
+      {/* Modal de Detalhes */}
+      <ProjectModal 
+        project={selectedProject} 
+        isOpen={!!selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   )
 }
