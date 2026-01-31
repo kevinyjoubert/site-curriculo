@@ -57,8 +57,8 @@ export function Work() {
         {/* Timeline Container */}
         <div className="relative max-w-4xl mx-auto">
           
-          {/* Linha Vertical Central (Apenas Desktop) */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-zinc-800 -translate-x-1/2" />
+          {/* Linha Vertical Central */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-zinc-800 -translate-x-1/2" />
 
           <div className="space-y-12 md:space-y-24">
             {steps.map((step, index) => {
