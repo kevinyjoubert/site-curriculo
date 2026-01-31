@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle, Database, Code2, Cpu } from 'lucide-react'
+import { ArrowRight, MessageCircle, Database, Code2, Cpu, FileText, Building2, FileSpreadsheet, Zap, Chrome, BarChart3 } from 'lucide-react'
 import { FadeInView } from '../components/ui/FadeInView'
 
 export function Hero() {
@@ -44,16 +44,28 @@ export function Hero() {
           </FadeInView>
 
           <FadeInView delay={400}>
-            <div className="mt-8 flex flex-wrap gap-6 text-sm text-zinc-500">
-              <div className="flex items-center gap-2">
-                <Code2 className="w-4 h-4 text-indigo-500" /> Desenvolvimento Web e Aplicações
-              </div>
-              <div className="flex items-center gap-2">
-                <Database className="w-4 h-4 text-indigo-500" /> Arquitetura de Dados
-              </div>
-              <div className="flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-indigo-500" /> Automações & Integrações(APIs)
-              </div>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 items-stretch">
+              {[
+                { icon: Code2, text: "Desenvolvimento Web e Aplicações" },
+                { icon: Database, text: "Arquitetura de Dados" },
+                { icon: Cpu, text: "Automações & Integrações(APIs)" },
+                { icon: Building2, text: "Soluções no ERP Sankhya" },
+                { icon: FileText, text: "Relatórios Formatados" },
+                { icon: BarChart3, text: "Dashboards" },
+                { icon: FileSpreadsheet, text: "Automações em Google Sheets" },
+                { icon: Zap, text: "Soluções com Google Apps Script" },
+                { icon: Chrome, text: "Integração com Ferramentas do Google" }
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-3 bg-zinc-800/80 border border-zinc-800 p-3 rounded-xl text-zinc-300 hover:border-indigo-500/50 hover:bg-zinc-900/80 transition-all duration-300 w-full"
+                >
+                  <item.icon className="w-4 h-4 text-indigo-400 shrink-0" />
+                  <span className="text-xs md:text-sm font-medium leading-tight">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
             </div>
           </FadeInView>
 
@@ -61,7 +73,7 @@ export function Hero() {
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
               <a
                 href="#projetos"
-                className="group px-8 py-4 rounded-xl bg-white text-black font-bold flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all active:scale-95"
+                className="group px-8 py-4 rounded-xl bg-white text-black font-bold flex items-center justify-center gap-2 hover:bg-zinc-300 transition-all active:scale-95"
               >
                 Ver Soluções Reais
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -69,7 +81,7 @@ export function Hero() {
 
               <a
                 href="#contato"
-                className="px-8 py-4 rounded-xl border border-zinc-800 text-white font-medium flex items-center justify-center gap-2 hover:bg-zinc-900 transition-all active:scale-95"
+                className="px-8 py-4 rounded-xl border border-zinc-800 text-white font-medium flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all active:scale-95"
               >
                 <MessageCircle className="w-4 h-4 text-zinc-500" />
                 Iniciar uma conversa

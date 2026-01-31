@@ -39,7 +39,7 @@ const steps = [
 
 export function Work() {
   return (
-    <section id="como-eu-conduzo-os-projetos" className="py-24 bg-zinc-900 relative overflow-hidden">
+    <section id="como-trabalho" className="py-24 bg-zinc-900 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Cabeçalho da Seção */}

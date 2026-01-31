@@ -35,7 +35,7 @@ export function About() {
               </div>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                {['Sistemas Web', 'Aplicativos Práticos', 'Organização de Dados', 'Integração de Ferramentas'].map(skill => (
+                {['Sistemas Web', 'Aplicativos Práticos', 'Organização de Dados', 'Integração de Ferramentas', 'ERP Sankhya', 'Relatórios Formatados', 'Dashboards', 'Automações em Google Sheets', 'Soluções com Google Apps Script', 'Integração com Ferramentas do Google'].map(skill => (
                   <span key={skill} className="px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-sm text-zinc-300">
                     {skill}
                   </span>
