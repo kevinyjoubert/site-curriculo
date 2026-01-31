@@ -8,9 +8,34 @@ export type Project = {
   stack: string[]
   highlights: string[]
   images: string[]
+  features?: string[]
+  technologies?: string[]
+  liveUrl?: string
+  githubUrl?: string
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'site-curriculo',
+    title: 'Portfólio Profissional',
+    summary: 'A plataforma onde você está agora. Desenvolvida para demonstrar minhas habilidades em UX, Performance e Código Limpo.',
+    description: 'Este projeto não é apenas uma vitrine, é uma demonstração técnica. Focado na experiência do usuário e na conversão, utilizei as tecnologias mais modernas do ecossistema React para garantir performance máxima, animações fluidas e SEO otimizado.',
+    problem: 'Necessidade de um canal centralizado e profissional para apresentar projetos complexos e facilitar o contato direto com clientes potenciais.',
+    solution: 'Desenvolvimento de uma SPA (Single Page Application) performática com React, utilizando Tailwind para estilização avançada e CSS moderno para uma experiência de uso "app-like".',
+    features: [
+      'Animações de entrada e scroll (Intersection Observer)',
+      'Design Responsivo e Layout "Mobile First"',
+      'Integração direta com WhatsApp API',
+      'Componentização Atômica e Reutilizável'
+    ],
+    // Mapeando para stack e highlights para manter consistência com o layout novo
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    highlights: ['UX/UI Design', 'Performance', 'SEO'],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
+    liveUrl: 'https://kevinyjoubert.netlify.app/',
+    githubUrl: 'https://github.com/kevinyjoubert/site-curriculo'
+  },
   {
     slug: 'cardapio-digital',
     title: 'Cardápio Digital',
@@ -28,9 +53,9 @@ export const projects: Project[] = [
       'Integração com cozinha',
       'Arquitetura modular',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
   },
-
   {
     slug: 'integracao-erp',
     title: 'Serviço de Integração ERP',
@@ -48,9 +73,9 @@ export const projects: Project[] = [
       'Tratamento de falhas',
       'Reprocessamento seguro',
     ],
-    images: ['/images/integracao-erp/1.png', '/images/integracao-erp/2.png', '/images/integracao-erp/3.png'],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    images: [],
   },
-
   {
     slug: 'automacao-processos',
     title: 'Automação de Processos',
@@ -68,9 +93,9 @@ export const projects: Project[] = [
       'Auditoria automatizada',
       'Padronização',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/automacao-processos/1.png', '/images/automacao-processos/2.png', '/images/automacao-processos/3.png'],
   },
-
   {
     slug: 'dashboard-gerencial',
     title: 'Dashboard Gerencial',
@@ -88,9 +113,9 @@ export const projects: Project[] = [
       'Filtros dinâmicos',
       'Interface limpa',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
   },
-
   {
     slug: 'modulo-descontos',
     title: 'Módulo de Descontos',
@@ -108,9 +133,9 @@ export const projects: Project[] = [
       'Auditoria',
       'Regras centralizadas',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/automacao-processos/1.png', '/images/automacao-processos/2.png', '/images/automacao-processos/3.png'],
   },
-
   {
     slug: 'sincronizacao-bancos',
     title: 'Sincronização entre Bancos',
@@ -128,9 +153,9 @@ export const projects: Project[] = [
       'Histórico de falhas',
       'Consistência de dados',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/integracao-erp/1.png', '/images/integracao-erp/2.png', '/images/integracao-erp/3.png'],
   },
-
   {
     slug: 'extensao-intellij',
     title: 'Extensão para IntelliJ',
@@ -148,9 +173,9 @@ export const projects: Project[] = [
       'Padronização',
       'Produtividade',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
   },
-
   {
     slug: 'servico-notificacoes',
     title: 'Serviço de Notificações',
@@ -168,9 +193,9 @@ export const projects: Project[] = [
       'Logs centralizados',
       'Retry automático',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/integracao-erp/1.png', '/images/integracao-erp/2.png', '/images/integracao-erp/3.png'],
   },
-
   {
     slug: 'painel-cozinha',
     title: 'Painel da Cozinha',
@@ -188,9 +213,9 @@ export const projects: Project[] = [
       'Status visual',
       'Agilidade operacional',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
   },
-
   {
     slug: 'relatorios-operacionais',
     title: 'Relatórios Operacionais',
@@ -208,6 +233,7 @@ export const projects: Project[] = [
       'Filtros avançados',
       'Exportação',
     ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     images: ['/images/automacao-processos/1.png', '/images/automacao-processos/2.png', '/images/automacao-processos/3.png'],
   },
 ]
