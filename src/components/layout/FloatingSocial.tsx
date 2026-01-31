@@ -64,7 +64,7 @@ export function FloatingSocial() {
 
       {/* LinkedIn */}
       <a
-        href="https://www.linkedin.com/in/seu-usuario"
+        href="https://linkedin.com/in/keviny-joubert"
         target="_blank"
         rel="noopener noreferrer"
         className="
