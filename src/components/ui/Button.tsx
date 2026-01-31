@@ -4,6 +4,7 @@ type ButtonProps = {
   href?: string
   variant?: 'primary' | 'secondary'
   disabled?: boolean
+  className?: string
 }
 
 export function Button({
@@ -12,6 +13,7 @@ export function Button({
   href,
   variant = 'primary',
   disabled = false,
+  className,
 }: ButtonProps) {
   const base =
     `
@@ -24,6 +26,7 @@ export function Button({
     focus-visible:ring-offset-zinc-950
     disabled:opacity-50
     disabled:cursor-not-allowed
+    ${className ?? ''}
     `
 
   const variants = {
