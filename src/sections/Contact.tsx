@@ -96,7 +96,8 @@ export function Contact() {
               <FadeInView delay={700} className="flex flex-col gap-4">
                 <Button
                   onClick={handleWhatsAppClick}
-                  className="w-full md:w-auto bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 px-8 text-lg font-bold shadow-lg shadow-green-500/10 transition-all hover:scale-[1.02]"
+                  variant="custom"
+                  className="w-full md:w-auto text-white py-4 px-8 bg-[#25D366] hover:bg-[#128C7E] text-lg font-bold shadow-lg shadow-[#25D366]/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Chamar no WhatsApp <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
