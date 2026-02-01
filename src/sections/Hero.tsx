@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ArrowRight, MessageCircle, Database, Code2, Cpu, FileText, Building2, FileSpreadsheet, Zap, Chrome, BarChart3 } from 'lucide-react'
+import { Button } from '../components/ui/Button'
 import { FadeInView } from '../components/ui/FadeInView'
 import { useInView } from '../hooks/UseInView'
 
@@ -8,14 +9,12 @@ export function Hero() {
   const [textSlogan, setTextSlogan] = useState('')
   const [isTypingFinished, setIsTypingFinished] = useState(false)
 
-  // Utilizando seu hook para monitorar a visibilidade da seção
   const { ref: sectionRef, visible: isVisible } = useInView<HTMLElement>(0.1)
 
   const name = "Keviny Joubert"
   const slogan = "Sistemas que escalam negócios."
 
   useEffect(() => {
-    // Se sair da seção, reseta os estados
     if (!isVisible) {
       setTextName('')
       setTextSlogan('')
@@ -33,7 +32,6 @@ export function Hero() {
         const offset = currentStep - name.length
         setTextSlogan(slogan.slice(0, offset + 1))
       } else {
-        // Finalizou a digitação
         setIsTypingFinished(true)
         clearInterval(intervalId)
       }
@@ -42,6 +40,10 @@ export function Hero() {
 
     return () => clearInterval(intervalId)
   }, [isVisible])
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <section
@@ -80,9 +82,7 @@ export function Hero() {
             </h1>
           </div>
 
-          {/* O conteúdo abaixo só aparece após o typing terminar */}
           <div className={`transition-all duration-1000 transform ${isTypingFinished ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            
             <p className="mt-8 text-lg md:text-xl text-zinc-400 leading-relaxed">
               Desenvolvedor Full Stack com foco em sistemas corporativos de alta performance. 
               Transformo processos complexos em ferramentas digitais simples, seguras e lucrativas.
@@ -113,24 +113,25 @@ export function Hero() {
             </div>
 
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => document.getElementById('projetos')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group px-8 py-4 rounded-xl bg-white text-black font-bold flex items-center justify-center gap-2 hover:bg-zinc-300 transition-all active:scale-95"
+              <Button
+                variant="custom"
+                onClick={() => scrollToSection('projetos')}
+                className="group py-4 px-8 rounded-xl bg-white text-black font-bold hover:bg-zinc-200 active:scale-95"
               >
                 Ver Soluções Reais
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
 
-              <button
-                onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-8 py-4 rounded-xl border border-zinc-800 text-white font-medium flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all active:scale-95"
+              <Button
+                variant="secondary"
+                onClick={() => scrollToSection('contato')}
+                className="py-4 px-8 rounded-xl active:scale-95"
               >
-                <MessageCircle className="w-4 h-4 text-zinc-500" />
+                <MessageCircle className="mr-2 w-4 h-4 text-zinc-500" />
                 Iniciar uma conversa
-              </button>
+              </Button>
             </div>
           </div>
-
         </div>
       </div>
     </section>

@@ -1,11 +1,10 @@
-/* Componente de botão flexível com suporte a sobreposição de cores externas */
-type ButtonProps = {
-  children: React.ReactNode
-  onClick?: () => void
-  href?: string
+import React from 'react'
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & 
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  children?: React.ReactNode
   variant?: 'primary' | 'secondary' | 'custom'
-  disabled?: boolean
-  className?: string
+  href?: string
 }
 
 export function Button({
@@ -13,8 +12,9 @@ export function Button({
   onClick,
   href,
   variant = 'primary',
-  disabled = false,
   className,
+  disabled,
+  ...props
 }: ButtonProps) {
   const base = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 disabled:opacity-50 disabled:cursor-not-allowed'
 
@@ -30,9 +30,10 @@ export function Button({
     return (
       <a
         href={disabled ? undefined : href}
+        className={finalClasses}
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : 0}
-        className={finalClasses}
+        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {children}
       </a>
@@ -46,6 +47,7 @@ export function Button({
       disabled={disabled}
       aria-disabled={disabled}
       className={finalClasses}
+      {...props}
     >
       {children}
     </button>

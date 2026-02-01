@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { X, ExternalLink, CheckCircle2 } from 'lucide-react'
 import type { Project } from '../../data/projects'
+import { Button } from '../ui/Button'
 import { Badge } from './Badge'
 import { Carousel } from './Carousel'
 
@@ -39,12 +40,14 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
       <div className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-300">
         
-        <button
+        <Button
+          variant="custom"
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors backdrop-blur-md"
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors backdrop-blur-md min-h-0 min-w-0 border-none"
+          aria-label="Fechar modal"
         >
           <X className="w-5 h-5" />
-        </button>
+        </Button>
 
         <div className="relative h-64 md:h-80 w-full">
           {project.images?.[0] ? (
@@ -106,14 +109,15 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           <div className="space-y-8">
             <div className="flex flex-col gap-3">
               {project.liveUrl && (
-                <a 
+                <Button 
                   href={project.liveUrl} 
+                  variant="primary"
                   target="_blank" 
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors"
+                  className="w-full py-4"
                 >
-                  <ExternalLink className="w-4 h-4" /> Ver Projeto Online
-                </a>
+                  <ExternalLink className="w-4 h-4 mr-2" /> Ver Projeto Online
+                </Button>
               )}
             </div>
 

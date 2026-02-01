@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { Button } from '../ui/Button'
 
 const links = [
   { id: 'inicio', label: 'Início' },
@@ -31,12 +32,8 @@ export function Header() {
     return () => observer.disconnect()
   }, [isHome])
 
-  /**
-   * Executa o scroll suave sem alterar a URL (#hash)
-   */
   const handleScrollNavigation = (id: string) => {
     setOpen(false)
-    
     if (!isHome) {
       navigate('/')
       setTimeout(() => {
@@ -50,48 +47,56 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-zinc-950/80 backdrop-blur border-b border-zinc-800">
       <div className="w-[90vw] max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-        <button
+        <Button
+          variant="custom"
           onClick={() => handleScrollNavigation('inicio')}
-          className="font-bold tracking-tight text-white transition hover:text-indigo-400"
+          className="p-0 font-bold tracking-tight text-white hover:text-indigo-400 bg-transparent"
         >
           Keviny Joubert Cruz
-        </button>
+        </Button>
 
-        <nav className="hidden md:flex gap-6 text-sm">
+        <nav className="hidden md:flex gap-6">
           {links.map(link => (
-            <button
+            <Button
               key={link.id}
+              variant="custom"
               onClick={() => handleScrollNavigation(link.id)}
               className={`
-                transition focus:outline-none 
+                px-0 py-0 bg-transparent text-sm font-normal
                 ${active === link.id && isHome ? 'text-indigo-400 font-medium' : 'text-zinc-300 hover:text-white'}
               `}
             >
               {link.label}
-            </button>
+            </Button>
           ))}
         </nav>
 
-        {/* Mobile button */}
-        <button onClick={() => setOpen(!open)} className="md:hidden flex flex-col gap-[5px] w-8 h-8 justify-center">
+        <button 
+          onClick={() => setOpen(!open)} 
+          className="md:hidden flex flex-col gap-[5px] w-8 h-8 justify-center"
+          aria-label="Menu"
+        >
           <span className={`h-[2px] w-full bg-white transition-all ${open ? 'rotate-45 translate-y-[7px]' : ''}`} />
           <span className={`h-[2px] w-full bg-white transition-all ${open ? 'opacity-0' : ''}`} />
           <span className={`h-[2px] w-full bg-white transition-all ${open ? '-rotate-45 -translate-y-[7px]' : ''}`} />
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-zinc-950 border-t border-zinc-800 animate-fade-in">
-          <nav className="flex flex-col px-6 py-6 gap-6">
+          <nav className="flex flex-col px-6 py-6 gap-4">
             {links.map(link => (
-              <button
+              <Button
                 key={link.id}
+                variant="custom"
                 onClick={() => handleScrollNavigation(link.id)}
-                className={`text-left transition ${active === link.id ? 'text-indigo-400' : 'text-zinc-300'}`}
+                className={`
+                  justify-start px-0 py-2 bg-transparent
+                  ${active === link.id ? 'text-indigo-400' : 'text-zinc-300'}
+                `}
               >
                 {link.label}
-              </button>
+              </Button>
             ))}
           </nav>
         </div>

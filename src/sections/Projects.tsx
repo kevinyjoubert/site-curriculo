@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowUpRight, Lock, Code2, Database, LayoutTemplate } from 'lucide-react'
 import { projects } from '../data/projects'
 import type { Project } from '../data/projects'
+import { Button } from '../components/ui/Button'
 import { FadeInView } from '../components/ui/FadeInView'
 import { ProjectModal } from '../components/ui/ProjectModal'
 
@@ -10,7 +11,6 @@ export function Projects() {
 
   return (
     <section id="projetos" className="py-32 bg-zinc-950 relative overflow-hidden">
-      {/* Elementos decorativos de fundo */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[100px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/5 blur-[100px] rounded-full pointer-events-none" />
 
@@ -34,7 +34,6 @@ export function Projects() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
-            {/* Icone de cada card */}
             const Icon = project.title.includes('Dashboard') || project.title.includes('Painel') 
               ? LayoutTemplate 
               : project.stack.includes('Java') || project.stack.includes('SQL') 
@@ -43,17 +42,16 @@ export function Projects() {
 
             return (
               <FadeInView key={project.slug} delay={index * 100} className="h-full">
-                <button
+                <Button
+                  variant="custom"
                   onClick={() => setSelectedProject(project)}
-                  className="group relative block w-full text-left h-full p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/60 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                  className="group relative w-full h-full p-8 rounded-2xl bg-zinc-900/40 border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/60 text-left items-start justify-start flex-col px-8 py-8"
                 >
-                  {/* Cabeçalho do Card */}
-                  <div className="flex justify-between items-start mb-6">
+                  <div className="flex justify-between items-start mb-6 w-full">
                     <div className="p-3 rounded-lg bg-zinc-800/50 text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-all duration-300">
                       <Icon className="w-6 h-6" />
                     </div>
                     
-                    {/* Badge de "Privado" se não tiver imagens */}
                     {project.images.length === 0 && (
                       <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-zinc-500 font-bold px-2 py-1 rounded bg-zinc-950/50 border border-zinc-800">
                         <Lock className="w-3 h-3" /> Empresa Privada
@@ -61,7 +59,6 @@ export function Projects() {
                     )}
                   </div>
 
-                  {/* Conteúdo */}
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
                     {project.title}
                   </h3>
@@ -70,7 +67,6 @@ export function Projects() {
                     {project.summary}
                   </p>
 
-                  {/* Footer com Techs */}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.stack.slice(0, 3).map(tech => (
                       <span key={tech} className="text-xs px-2.5 py-1 rounded-md bg-zinc-800/50 text-zinc-400 border border-zinc-700/30 group-hover:border-zinc-600/50 transition-colors">
@@ -82,16 +78,14 @@ export function Projects() {
                     )}
                   </div>
 
-                  {/* Ícone de seta absoluta no topo (Interação) */}
                   <ArrowUpRight className="absolute top-3 right-3 w-5 h-5 text-zinc-600 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
-                </button>
+                </Button>
               </FadeInView>
             )
           })}
         </div>
       </div>
 
-      {/* Modal de Detalhes */}
       <ProjectModal 
         project={selectedProject} 
         isOpen={!!selectedProject} 

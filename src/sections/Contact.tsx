@@ -1,3 +1,4 @@
+/* Seção de Contato completa com alinhamento corrigido e integração do componente Button */
 import { useState, useEffect } from 'react'
 import { Mail, Phone, MapPin, ArrowRight, Check, Copy } from 'lucide-react'
 import { Button } from '../components/ui/Button'
@@ -59,7 +60,6 @@ export function Contact() {
         document.execCommand('copy');
         document.body.removeChild(textArea);
       }
-
       setCopiedItem(id);
       setTimeout(() => setCopiedItem(null), 2000);
     } catch (err) {
@@ -68,9 +68,12 @@ export function Contact() {
   }
 
   const handleWhatsAppClick = () => {
-    const text = encodeURIComponent("Olá Keviny, vi seu portfólio e gostaria de discutir um projeto.")
+    const text = encodeURIComponent("Olá Keviny Joubert, vi seu portfólio e gostaria de discutir um projeto.")
     window.open(`https://wa.me/5581991708885?text=${text}`, '_blank')
   }
+
+  const emailSubject = encodeURIComponent("Contato via Portfólio - [Seu Nome/Empresa]");
+  const emailBody = encodeURIComponent("Olá Keviny Joubert,\n\nVi seu portfólio e gostaria de conversar sobre um projeto de...");
 
   return (
     <section id="contato" ref={sectionRef} className="py-16 md:py-24 bg-zinc-950 relative overflow-hidden">
@@ -78,7 +81,6 @@ export function Contact() {
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
 
-            {/* Coluna da Esquerda */}
             <div className="text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white min-h-[100px] md:min-h-[90px] leading-tight">
                 {text1}
@@ -102,25 +104,26 @@ export function Contact() {
                   Chamar no WhatsApp <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
 
-                <a
-                  href="mailto:joubert.kjc@gmail.com"
-                  className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors text-base font-medium"
+                <Button
+                  href={`mailto:joubert.kjc@gmail.com?subject=${emailSubject}&body=${emailBody}`}
+                  variant="secondary"
+                  className="w-full md:w-auto py-4 px-6 bg-zinc-900 border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-white"
                 >
-                  <Mail className="w-5 h-5" /> Enviar E-mail
-                </a>
+                  <Mail className="w-5 h-5 mr-2" /> Enviar E-mail
+                </Button>
               </FadeInView>
             </div>
 
-            {/* Card da Direita */}
             <FadeInView delay={1000} className="h-full">
               <div className="bg-zinc-900/40 p-8 md:px-12 md:py-12 h-full flex flex-col justify-center rounded-2xl border border-zinc-800/50 backdrop-blur-md">
                 <h3 className="text-xl font-semibold text-white mb-8 text-center md:text-left">Canais Diretos</h3>
                 <div className="space-y-6">
 
                   {/* Telefone */}
-                  <button
+                  <Button
+                    variant="custom"
                     onClick={() => copyToClipboard('+5581991708885', 'phone')}
-                    className="w-full flex items-start gap-4 hover:bg-zinc-800/40 p-3 rounded-xl transition-all group border border-transparent hover:border-zinc-700/50 text-left"
+                    className="w-full flex items-start gap-4 hover:bg-zinc-800/40 p-3 px-3 rounded-xl transition-all group border border-transparent hover:border-zinc-700/50 text-left justify-start"
                   >
                     <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400 group-hover:bg-indigo-500/20">
                       <Phone className="w-5 h-5 md:w-6 md:h-6" />
@@ -136,12 +139,13 @@ export function Contact() {
                         <Copy className="w-4 h-4 opacity-100 transition-opacity" />
                       )}
                     </div>
-                  </button>
+                  </Button>
 
                   {/* E-mail */}
-                  <button
+                  <Button
+                    variant="custom"
                     onClick={() => copyToClipboard('joubert.kjc@gmail.com', 'email')}
-                    className="w-full flex items-start gap-4 hover:bg-zinc-800/40 p-3 rounded-xl transition-all group border border-transparent hover:border-zinc-700/50 text-left"
+                    className="w-full flex items-start gap-4 hover:bg-zinc-800/40 p-3 px-3 rounded-xl transition-all group border border-transparent hover:border-zinc-700/50 text-left justify-start"
                   >
                     <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400 group-hover:bg-indigo-500/20">
                       <Mail className="w-5 h-5 md:w-6 md:h-6" />
@@ -157,17 +161,18 @@ export function Contact() {
                         <Copy className="w-4 h-4 opacity-100 transition-opacity" />
                       )}
                     </div>
-                  </button>
+                  </Button>
 
                   {/* Localização */}
-                  <div className="w-full flex items-start gap-4 p-3">
+                  <div className="w-full flex items-start gap-4 p-3 px-6 border border-transparent">
                     <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
                       <MapPin className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <p className="text-xs text-zinc-500 mb-1 uppercase tracking-wider font-bold">Localização</p>
                       <p className="text-zinc-200 font-medium">Recife - PE (Disponível Remoto)</p>
                     </div>
+                    <div className="ml-2 w-4" />
                   </div>
                 </div>
               </div>
