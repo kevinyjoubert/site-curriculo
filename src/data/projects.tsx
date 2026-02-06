@@ -17,20 +17,25 @@ export const projects: Project[] = [
   {
     slug: 'site-curriculo',
     title: 'Portfólio Profissional',
-    summary: 'A plataforma onde você está agora. Desenvolvida para demonstrar minhas habilidades em UX, Performance e Código Limpo.',
-    description: 'Este projeto não é apenas uma vitrine, é uma demonstração técnica. Focado na experiência do usuário e na conversão, utilizei as tecnologias mais modernas do ecossistema React para garantir performance máxima, animações fluidas e SEO otimizado.',
-    problem: 'Necessidade de um canal centralizado e profissional para apresentar projetos complexos e facilitar o contato direto com clientes potenciais.',
-    solution: 'Desenvolvimento de uma SPA (Single Page Application) performática com React, utilizando Tailwind para estilização avançada e CSS moderno para uma experiência de uso "app-like".',
+    summary: 'Um portfólio técnico projetado para demonstrar domínio em arquitetura front-end, experiência do usuário e engenharia de performance.',
+    description: 'Este projeto foi concebido como um artefato técnico, não apenas como um site institucional. Cada decisão — da arquitetura ao CSS — foi pensada para equilibrar clareza, performance e manutenibilidade. A aplicação explora conceitos modernos do ecossistema React para entregar uma experiência fluida, responsiva e orientada à conversão, com foco real em legibilidade, escaneabilidade e SEO.',
+    problem: 'Falta de uma plataforma centralizada que comunique competência técnica de forma objetiva, sem ruído visual ou textos genéricos, permitindo que recrutadores e clientes entendam rapidamente o valor entregue.',
+    solution: 'Construção de uma SPA performática e semanticamente estruturada, utilizando React e Vite para carregamento rápido, Tailwind para consistência visual e CSS moderno para microinterações e sensação de aplicação nativa.',
     features: [
-      'Animações de entrada e scroll (Intersection Observer)',
-      'Design Responsivo e Layout "Mobile First"',
-      'Integração direta com WhatsApp API',
-      'Componentização Atômica e Reutilizável'
+      'Animações progressivas baseadas em Intersection Observer, sem impacto negativo em performance',
+      'Layout responsivo com abordagem mobile-first e foco em legibilidade',
+      'Integração direta com WhatsApp para redução de atrito no contato',
+      'Arquitetura de componentes reutilizáveis e previsíveis'
     ],
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    highlights: ['UX/UI Design', 'Performance', 'SEO'],
+    highlights: ['UX orientado à leitura', 'Performance real', 'SEO semântico'],
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    images: ['/images/portifolio/1.png', '/images/portifolio/2.png', '/images/portifolio/3.png', '/images/portifolio/4.png'],
+    images: [
+      '/images/portifolio/1.png',
+      '/images/portifolio/2.png',
+      '/images/portifolio/3.png',
+      '/images/portifolio/4.png'
+    ],
     liveUrl: 'https://kevinyjoubert.netlify.app/'
   },
   {
