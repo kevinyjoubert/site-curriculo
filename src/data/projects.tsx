@@ -30,7 +30,7 @@ export const projects: Project[] = [
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     highlights: ['UX/UI Design', 'Performance', 'SEO'],
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
+    images: ['/images/portifolio/1.png', '/images/portifolio/2.png', '/images/portifolio/3.png', '/images/portifolio/4.png'],
     liveUrl: 'https://kevinyjoubert.netlify.app/'
   },
   {
