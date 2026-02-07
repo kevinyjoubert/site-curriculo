@@ -18,7 +18,7 @@ export function Projects() {
         <FadeInView>
           <div className="mb-10 max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Projetos Entregues
+              Projetos Entregues <span className='text-xl text-indigo-300'>({projects.length} projetos)</span>
             </h2>
             <p className="text-zinc-400 text-lg">
               Alguns projetos são públicos, outros são confidenciais.

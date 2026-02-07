@@ -65,7 +65,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             </>
           ) : (
             <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
-              <span className="text-zinc-500">Projeto sem imagem</span>
+              <span className="text-zinc-500">Projeto Privado - Imagens privadas</span>
             </div>
           )}
 
