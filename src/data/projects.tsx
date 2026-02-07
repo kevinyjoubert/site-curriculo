@@ -35,28 +35,35 @@ export const projects: Project[] = [
       '/images/portifolio/2.png',
       '/images/portifolio/3.png',
       '/images/portifolio/4.png'
-    ],
-    liveUrl: 'https://kevinyjoubert.netlify.app/'
+    ]
+    // liveUrl: 'https://kevinyjoubert.netlify.app/'
   },
   {
     slug: 'cardapio-digital',
     title: 'Cardápio Digital',
     summary:
-      'Sistema completo para restaurantes com pedidos por tablet e integração com cozinha.',
+      'Plataforma completa para restaurantes que centraliza pedidos, gestão de cardápio e divisão de contas em tempo real.',
     description:
-      'Projeto desenvolvido para digitalizar o fluxo de pedidos em restaurantes, substituindo processos manuais por uma solução integrada.',
+      'Sistema desenvolvido para substituir o fluxo tradicional de pedidos em restaurantes por uma solução digital integrada. A aplicação conecta clientes, garçons, cozinha e gerência em um único ecossistema, reduzindo erros operacionais e aumentando a eficiência do atendimento.',
     problem:
-      'Pedidos manuais geravam erros frequentes, atrasos no atendimento e falta de controle sobre o status dos pratos.',
+      'Processos manuais de anotação e comunicação entre mesa, garçom e cozinha geravam retrabalho, inconsistência de pedidos, demora no atendimento e falta de controle gerencial.',
     solution:
-      'Criação de um sistema com tablets nas mesas, painel de pedidos na cozinha e backend centralizado.',
+      'Implementação de um sistema distribuído com tablets nas mesas para autoatendimento, painel de controle para a cozinha e interface administrativa para gestão dinâmica do cardápio, preços e regras de cobrança.',
     stack: ['Java', 'React', 'Oracle', 'Tailwind'],
     highlights: [
-      'Pedidos em tempo real',
-      'Integração com cozinha',
-      'Arquitetura modular',
+      'Pedidos enviados diretamente da mesa para a cozinha e garçom',
+      'Atualização em tempo real de preços, fotos e descrições do cardápio',
+      'Divisão de conta personalizada por cliente ou por itens',
+      'Cálculo automático do valor total com taxa de serviço'
     ],
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    images: ['/images/cardapio/1.png', '/images/cardapio/2.png', '/images/cardapio/3.png'],
+    technologies: ['Java', 'React', 'Oracle', 'Tailwind'],
+    images: [
+      '/images/cardapio-digital/1.png',
+      '/images/cardapio-digital/2.png',
+      '/images/cardapio-digital/3.png',
+      '/images/cardapio-digital/4.png',
+      '/images/cardapio-digital/5.png'
+    ],
   },
   {
     slug: 'integracao-erp',
